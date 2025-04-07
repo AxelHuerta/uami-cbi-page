@@ -1,0 +1,221 @@
+---
+const seminars = [
+  {
+    id: 1,
+    title: "Ceremonia de reconocimientos a profesores jubilados CBI 2024",
+    subtitle: "Seminario del PCyTI",
+    description:
+      "En esta ocasión el Dr. Miguel Ángel Ruiz nos compartirá en esta sesión",
+    image: "/images/seminar1.jpg",
+    videoThumbnail: "/images/video-thumbnail1.jpg",
+  },
+  {
+    id: 2,
+    title: "Inteligencia Artificial y sus aplicaciones",
+    subtitle: "Seminario de Investigación",
+    description:
+      "La Dra. Laura Martínez presentará los avances en IA aplicada a la ingeniería",
+    image: "/images/seminar2.jpg",
+    videoThumbnail: "/images/video-thumbnail2.jpg",
+  },
+  {
+    id: 3,
+    title: "Nuevos materiales para energías renovables",
+    subtitle: "Seminario de Química Aplicada",
+    description:
+      "El Dr. Carlos Sánchez expondrá los últimos avances en materiales sostenibles",
+    image: "/images/seminar3.jpg",
+    videoThumbnail: "/images/video-thumbnail3.jpg",
+  },
+  {
+    id: 4,
+    title: "Modelado matemático de sistemas complejos",
+    subtitle: "Seminario de Matemáticas",
+    description:
+      "La Dra. Ana González presentará nuevos modelos para sistemas dinámicos",
+    image: "/images/seminar4.jpg",
+    videoThumbnail: "/images/video-thumbnail4.jpg",
+  },
+  {
+    id: 5,
+    title: "Física cuántica y computación",
+    subtitle: "Seminario de Física Avanzada",
+    description:
+      "El Dr. Roberto Méndez explicará los fundamentos de la computación cuántica",
+    image: "/images/seminar5.jpg",
+    videoThumbnail: "/images/video-thumbnail5.jpg",
+  },
+];
+---
+
+<div class="relative overflow-hidden">
+  <div class="flex h-[300px] md:h-[350px]">
+    {
+      seminars.map((seminar, index) => (
+        <div
+          data-seminar={index}
+          class="absolute w-full h-full transition-all duration-500 ease-in-out translate-x-full opacity-0"
+        >
+          <div class="grid md:grid-cols-2 h-full">
+            <div class="flex flex-col justify-center p-8 md:p-12">
+              <h3 class="text-lg font-medium text-[#6b9d28] mb-2">
+                {seminar.subtitle}
+              </h3>
+              <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">
+                "{seminar.title}"
+              </h2>
+              <p class="text-gray-300 mb-6">{seminar.description}</p>
+            </div>
+            <div class="relative h-full overflow-hidden flex items-center justify-center p-6">
+              <div class="relative w-full max-w-md aspect-video rounded-lg overflow-hidden group">
+                <img
+                  src={seminar.videoThumbnail || "/placeholder.svg"}
+                  alt={seminar.title}
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                  <div class="w-16 h-16 rounded-full bg-[#6b9d28]/80 group-hover:bg-[#6b9d28] flex items-center justify-center transition-colors">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-8 w-8 text-white fill-white"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Navigation Buttons -->
+  <button
+    id="prevButton"
+    class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors z-10"
+    aria-label="Anterior"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-5 w-5 text-white"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+        clip-rule="evenodd"></path>
+    </svg>
+  </button>
+  <button
+    id="nextButton"
+    class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors z-10"
+    aria-label="Siguiente"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-5 w-5 text-white"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+        clip-rule="evenodd"></path>
+    </svg>
+  </button>
+
+  <!-- Indicators -->
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+    {
+      seminars.map((_, index) => (
+        <button
+          data-indicator={index}
+          class="w-2 h-2 rounded-full transition-all duration-300 bg-white/50"
+          aria-label={`Ir a seminario ${index + 1}`}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  let currentSlide = 0;
+  let isAnimating = false;
+  let autoplayInterval: number | null = null;
+
+  const seminars = document.querySelectorAll("[data-seminar]");
+  const indicators = document.querySelectorAll("[data-indicator]");
+  const prevButton = document.getElementById("prevButton");
+  const nextButton = document.getElementById("nextButton");
+
+  function updateSlide(index: number) {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    const currentSlideElement = seminars[currentSlide];
+    const nextSlideElement = seminars[index];
+
+    currentSlideElement.classList.remove("translate-x-0", "opacity-100");
+    currentSlideElement.classList.add("-translate-x-full", "opacity-0");
+
+    nextSlideElement.classList.remove("translate-x-full", "opacity-0");
+    nextSlideElement.classList.add("translate-x-0", "opacity-100");
+
+    indicators[currentSlide].classList.remove("bg-[#6b9d28]", "w-4");
+    indicators[currentSlide].classList.add("bg-white/50", "w-2");
+
+    indicators[index].classList.remove("bg-white/50", "w-2");
+    indicators[index].classList.add("bg-[#6b9d28]", "w-4");
+
+    currentSlide = index;
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 500);
+  }
+
+  function nextSlide() {
+    const nextIndex =
+      currentSlide === seminars.length - 1 ? 0 : currentSlide + 1;
+    updateSlide(nextIndex);
+  }
+
+  function prevSlide() {
+    const prevIndex =
+      currentSlide === 0 ? seminars.length - 1 : currentSlide - 1;
+    updateSlide(prevIndex);
+  }
+
+  function goToSlide(index: number) {
+    if (isAnimating || index === currentSlide) return;
+    updateSlide(index);
+  }
+
+  // Event Listeners
+  prevButton?.addEventListener("click", () => {
+    prevSlide();
+  });
+
+  nextButton?.addEventListener("click", () => {
+    nextSlide();
+  });
+
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener("click", () => {
+      goToSlide(index);
+    });
+  });
+
+  // Initialize first slide and start autoplay
+  updateSlide(0);
+  autoplayInterval = setInterval(nextSlide, 8000);
+</script>

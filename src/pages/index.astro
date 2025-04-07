@@ -1,32 +1,605 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Carousel from "../components/Carousel.astro";
+import Nav from "../components/Nav.astro";
+import DepartmentCard from "../components/DepartmentCard.astro";
+import SeminarCarousel from "../components/SeminarCarousel.astro";
+import CommunityCard from "../components/ComunityCard.astro";
+import StatCard from "../components/StatCard.astro";
+import CampusLinkCard from "../components/CampusLinkCard.astro";
+import PhotoGallery from "../components/PhotoGallery.astro";
+import ServiceLink from "../components/ServiceLink.astro";
+import {
+  Globe,
+  Users,
+  FileText,
+  GraduationCap,
+  BookOpen,
+  FlaskConical,
+  Youtube,
+  Book,
+} from "@lucide/astro";
+import Facebook from "../components/icons/Facebook.astro";
+import Twitter from "../components/icons/Twitter.astro";
+import Instagram from "../components/icons/Instagram.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const institucionalLinks = [
+  {
+    image:
+      "https://cbi.izt.uam.mx/images/sitio/home/sitios_interes/unigenero.png",
+    alt: "Unigenero",
+    href: "#",
+  },
+  {
+    image:
+      "https://cbi.izt.uam.mx/images/sitio/home/sitios_interes/defensoria.webp",
+    alt: "Defensoria",
+    href: "#",
+  },
+  {
+    image:
+      "https://cbi.izt.uam.mx/images/sitio/home/sitios_interes/uam_mujeres.webp",
+    alt: "UAM Mujeres",
+    href: "#",
+  },
+  {
+    image:
+      "https://cbi.izt.uam.mx/images/sitio/home/sitios_interes/becas_uam.webp",
+    alt: "Becas UAM",
+    href: "#",
+  },
+  {
+    image:
+      "https://cbi.izt.uam.mx/images/sitio/home/sitios_interes/vinculacion_uam.webp",
+    alt: "Vinculación UAM",
+    href: "#",
+  },
+  {
+    image: "https://cbi.izt.uam.mx/images/sitio/home/sitios_interes/sibot.webp",
+    alt: "SIBOT",
+    href: "#",
+  },
+  {
+    image: "https://cbi.izt.uam.mx/images/sitio/home/sitios_interes/celex.webp",
+    alt: "CELEX",
+    href: "#",
+  },
+  {
+    image:
+      "https://cbi.izt.uam.mx/images/sitio/home/sitios_interes/conahcyt.webp",
+    alt: "Conahcyt",
+    href: "#",
+  },
+  {
+    image:
+      "https://cbi.izt.uam.mx/images/sitio/home/sitios_interes/cemanahuac.png",
+    alt: "Cemanahuac",
+    href: "#",
+  },
+  {
+    image:
+      "https://cbi.izt.uam.mx/images/sitio/home/sitios_interes/finex_uami.webp",
+    alt: "Finex UAMI",
+    href: "#",
+  },
+  {
+    image: "https://cbi.izt.uam.mx/images/sitio/home/sitios_interes/ci3m.png",
+    alt: "CI3M",
+    href: "#",
+  },
+];
+
+const momentosPhotos = [
+  { src: "/images/momentos/momento1.jpg", alt: "Estudiantes en clase" },
+  { src: "/images/momentos/momento2.jpg", alt: "Ceremonia de graduación" },
+  { src: "/images/momentos/momento3.jpg", alt: "Conferencia académica" },
+  { src: "/images/momentos/momento4.jpg", alt: "Estudiantes con uniformes" },
+  { src: "/images/momentos/momento5.jpg", alt: "Graduados con togas" },
+  { src: "/images/momentos/momento6.jpg", alt: "Profesor dando clase" },
+  { src: "/images/momentos/momento7.jpg", alt: "Grupo de académicos" },
+  { src: "/images/momentos/momento8.jpg", alt: "Ceremonia oficial" },
+  {
+    src: "/images/momentos/momento9.jpg",
+    alt: "Estudiante con reconocimiento",
+  },
+];
 ---
 
 <Layout>
-  <nav class="flex justify-between items-center p-4 bg-white">
-    <img
-      src="https://cbi.izt.uam.mx/images/sitio/UAM50-CBI.png#joomlaImage://local-images/sitio/UAM50-CBI.png?width=1144&height=324"
-      alt="Logo UAM 50 años"
-      width="150"
-    />
-    <span class="font-bold">Menú</span>
-  </nav>
+  <Header />
+  <Nav />
 
-  <section
-    class="grid grid-rows-3 grid-flow-col gap-4 mx-auto my-8 p-8 max-w-6xl"
-  >
-    <div class="row-span-3 bg-white p-2 m-1 rounded-md">
-      <h2>Calendario</h2>
+  <!-- Hero section -->
+  <section class="relative h-[500px] md:h-[600px] overflow-hidden">
+    <img
+      src="https://cbi.izt.uam.mx/images/sitio/home/headers/header_01.webp"
+      alt="Campus UAM Iztapalapa"
+      class="object-cover brightness-75 scale-105 hover:scale-100 transition-transform duration-10000"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30">
+      <div
+        class="container mx-auto h-full flex flex-col justify-center text-white p-6"
+      >
+        <div class="max-w-2xl relative">
+          <div class="absolute -left-6 top-0 w-1 h-24 bg-[#6b9d28]"></div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-2 tracking-tight">
+            División de <br />
+            <span class="text-[#6b9d28]">Ciencias Básicas</span>
+            <br />e Ingeniería
+          </h1>
+          <h2 class="text-xl md:text-2xl mb-8 font-light">Unidad Iztapalapa</h2>
+          <button
+            class="bg-[#6b9d28] hover:bg-[#5a8422] text-white rounded-full px-6"
+            >Presentación</button
+          >
+        </div>
+      </div>
+    </div>
+    <div
+      class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/50 to-transparent"
+    >
+    </div>
+  </section>
+
+  <Carousel />
+
+  <section class="relative py-16 overflow-hidden">
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-teal-800/90 to-green-800/90"
+    >
       <img
-        src="https://cbi.izt.uam.mx/images/sitio/calendario/calendario_24-25.webp"
-        alt="Calendario UAM"
-        width="300"
+        src="https://cbi.izt.uam.mx/images/sitio/home/ludovico/soyUAM.webp"
+        alt="Background"
+        class="object-cover mix-blend-overlay opacity-60"
       />
     </div>
-    <div class="row-span-1 col-span-2 bg-white p-4 m-1 rounded-md">Titlani</div>
-    <div class="row-span-1 col-span-2 bg-white p-4 m-1 rounded-md">Xanum</div>
+    <div
+      class="absolute top-0 left-0 w-full h-4 bg-gradient-to-r from-blue-500 via-teal-500 to-green-500"
+    >
+    </div>
+    <div class="mx-auto relative z-10 px-4 md:px-6">
+      <div class="md:flex items-center">
+        <div class="md:w-1/3 mb-6 md:mb-0 relative">
+          <div
+            class="absolute -top-10 -left-10 w-20 h-20 rounded-full bg-white/10 animate-pulse"
+          >
+          </div>
+          <div
+            class="absolute -bottom-5 -right-5 w-16 h-16 rounded-full bg-white/10 animate-pulse delay-700"
+          >
+          </div>
+          <img
+            src="https://cbi.izt.uam.mx/images/sitio/home/ludovico/ludovico_mitad.png"
+            alt="Robot UAM"
+            class="mx-auto drop-shadow-xl transform hover:scale-105 transition-transform duration-500 mb-[-100px]"
+          />
+        </div>
+        <div class="md:w-2/3 text-white">
+          <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
+            ¡Toma una <span class="text-yellow-300">gran decisión</span>!
+          </h2>
+          <p class="text-lg mb-8 max-w-2xl font-light">
+            Te invitamos a conocer nuestros 10 programas de licenciatura.
+            ¡Consulta todos los detalles aquí!
+          </p>
+          <button
+            class="bg-white text-[#333] hover:bg-gray-100 rounded-full px-6 shadow-lg"
+            >Leer más</button
+          >
+        </div>
+      </div>
+    </div>
   </section>
+
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="grid md:grid-cols-2 gap-16">
+        <div>
+          <div class="flex items-center gap-3 mb-8">
+            <div class="h-px w-8 bg-[#6b9d28]"></div>
+            <h2 class="text-2xl font-bold text-[#333]">
+              Acerca de la UAM Iztapalapa
+            </h2>
+          </div>
+          <div class="space-y-4 text-gray-700">
+            <p class="leading-relaxed">
+              La Universidad Autónoma Metropolitana (UAM) fue creada a partir de
+              una iniciativa de ley enviada al Congreso de la Unión por el Poder
+              Ejecutivo en octubre de 1973.
+            </p>
+            <p class="leading-relaxed">
+              La mayoría de los participantes, que se reunían para discutir
+              diversos asuntos organizacionales, provenía de instituciones
+              nacionales de educación superior y fueron quienes definieron las
+              características de cada una de las unidades y las divisiones.
+            </p>
+            <p class="leading-relaxed">
+              La División de Ciencias Básica e Ingeniería define a la Unidad
+              Iztapalapa como la más apegada a los esquemas educativos
+              tradicionales al adoptar el "modelo internacional de las ciencias
+              e ingeniería" que se distinguía por la búsqueda de lo novedoso en
+              la organización departamental y las áreas de investigación.
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-3 mb-8">
+            <div class="h-px w-8 bg-[#6b9d28]"></div>
+            <h2 class="text-2xl font-bold text-[#333]">
+              Ciencias Básicas e Ingeniería
+            </h2>
+          </div>
+          <div class="space-y-4 text-gray-700">
+            <p class="leading-relaxed">
+              La División de Ciencias Básicas e Ingeniería cumplió un papel muy
+              importante en la definición de la Unidad Iztapalapa como la más
+              apegada a los esquemas educativos tradicionales al adoptar lo que
+              se podría denominar como "modelo internacional de las ciencias e
+              ingeniería" que se distinguía por la búsqueda de lo novedoso en la
+              organización departamental y las áreas de investigación.
+            </p>
+            <p class="leading-relaxed">
+              En CBI se definieron primero los grupos docentes de Física,
+              Química y Matemáticas, luego los de Ingeniería.
+            </p>
+            <p class="leading-relaxed">
+              La creación de los grupos de investigación se hizo por invitación
+              expresa de los jefes de departamento, que eran quienes decidían
+              los perfiles de los investigadores que se requerían en diversas
+              áreas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Departamentos académicos -->
+  <section class="py-20">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="flex items-center gap-3 mb-12">
+        <div class="h-px w-8 bg-[#6b9d28]"></div>
+        <h2 class="text-2xl font-bold text-[#333]">Departamentos Académicos</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <DepartmentCard
+          title="Departamento de Física"
+          image="https://cbi.izt.uam.mx/images/sitio/home/departamentos/depto_fisica.webp"
+          linkType="read-more"
+        />
+        <DepartmentCard
+          title="Departamento de Ingeniería Eléctrica"
+          image="https://cbi.izt.uam.mx/images/sitio/home/departamentos/depto_ie.webp"
+          linkType="read-more"
+        />
+        <DepartmentCard
+          title="Departamento de Ingeniería de Procesos e Hidráulica"
+          image="https://cbi.izt.uam.mx/images/sitio/home/departamentos/depto_iph.webp"
+          linkType="website"
+        />
+        <DepartmentCard
+          title="Departamento de Matemáticas"
+          image="https://cbi.izt.uam.mx/images/sitio/home/departamentos/depto_matematicas.webp"
+          linkType="website"
+        />
+        <DepartmentCard
+          title="Departamento de Química"
+          image="https://cbi.izt.uam.mx/images/sitio/home/departamentos/depto_quimica.webp"
+          linkType="website"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- <Carrousel de seminarios -->
+  <!-- <section class="py-16 bg-[#222]">
+    <div class="container mx-auto px-4 md:px-6">
+      <SeminarCarousel />
+    </div>
+  </section> -->
+
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="flex items-center gap-3 mb-12">
+        <div class="h-px w-8 bg-[#6b9d28]"></div>
+        <h2 class="text-2xl font-bold text-[#333]">Nuestra Comunidad</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <CommunityCard
+          title="Alumnado"
+          image="https://cbi.izt.uam.mx/images/sitio/home/comunidad/alumnado.webp"
+        />
+        <CommunityCard
+          title="Personal académico"
+          image="https://cbi.izt.uam.mx/images/sitio/home/comunidad/academicos.webp"
+        />
+        <CommunityCard
+          title="Personal de apoyo administrativo"
+          image="https://cbi.izt.uam.mx/images/sitio/home/comunidad/administrativos.webp"
+        />
+        <CommunityCard
+          title="Personas egresadas"
+          image="https://cbi.izt.uam.mx/images/sitio/home/comunidad/egresados.webp"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Consejo Divisional -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="flex items-center gap-3 mb-8">
+            <div class="h-px w-8 bg-[#6b9d28]"></div>
+            <h2 class="text-2xl font-bold text-[#333]">Consejo Divisional</h2>
+          </div>
+          <p class="text-gray-700 mb-8 leading-relaxed">
+            Es el órgano colegiado de la División que se encarga de decidir
+            sobre las cuestiones académicas y administrativas de la misma.
+            Consulta sus actividades, documentos y toda la información
+            relacionada aquí.
+          </p>
+          <button class="bg-[#6b9d28] hover:bg-[#5a8422] text-white rounded-md">
+            <Globe class="mr-2 h-4 w-4" />
+            Visitar sitio
+          </button>
+        </div>
+        <div class="relative h-[300px] rounded-lg overflow-hidden shadow-lg">
+          <img
+            src="/images/council-meeting.jpg"
+            alt="Consejo Divisional en sesión"
+            class="object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
+          >
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <div class="w-16 h-1 bg-[#6b9d28] mb-3"></div>
+            <h3 class="text-white text-lg font-medium">
+              Sesiones del Consejo Divisional
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- stats -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 md:px-6">
+      <div
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-4"
+      >
+        <StatCard number="3463" description="Integrantes del alumnado activo" />
+        <StatCard number="10" description="Licenciaturas" />
+        <StatCard
+          number="9033"
+          description="Personas egresadas de licenciatura"
+        />
+        <StatCard number="16" description="Programas de Posgrado" />
+        <StatCard number="2575" description="Personas egresadas de posgrado" />
+        <StatCard
+          number="271"
+          description="Integrantes de la planta académica"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="py-16 bg-gradient-to-r from-blue-500 via-teal-500 to-green-500 text-white"
+  >
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-2">Conoce a la UAM-I</h2>
+        <div class="w-24 h-1 bg-white mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <CampusLinkCard
+          title="Sitio Web UAM-Iztapalapa"
+          image="https://cbi.izt.uam.mx/images/sitio/home/conoce_uami/sitio_iztapalapa.webp"
+          href="https://iztapalapa.uam.mx/"
+        />
+        <CampusLinkCard
+          title="Coordinación de Sistemas Escolares"
+          image="https://cbi.izt.uam.mx/images/sitio/home/conoce_uami/cse.webp"
+          href="https://iztapalapa.uam.mx/"
+        />
+        <CampusLinkCard
+          title="Actividades Culturales"
+          image="https://cbi.izt.uam.mx/images/sitio/home/conoce_uami/actividades_culturales.webp"
+          href="https://iztapalapa.uam.mx/"
+        />
+        <CampusLinkCard
+          title="Actividades Deportivas"
+          image="https://cbi.izt.uam.mx/images/sitio/home/conoce_uami/actividades_deportivas.webp"
+          href="https://iztapalapa.uam.mx/"
+        />
+      </div>
+
+      <!-- Institucional links -->
+      <div class="text-center mt-12">
+        <h3 class="text-xl font-medium mb-2">Te invitamos a visitar</h3>
+        <div class="w-16 h-0.5 bg-white mx-auto"></div>
+      </div>
+
+      <div class="flex flex-wrap justify-center items-center gap-8 mt-8">
+        {
+          institucionalLinks.map((link) => (
+            <a
+              href={link.href}
+              class="bg-white p-3 rounded-lg hover:opacity-90 transition-opacity"
+            >
+              <img
+                src={link.image || "/placeholder.svg"}
+                alt={link.alt}
+                class="h-20 w-auto object-contain"
+              />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Momentos cbi -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="grid lg:grid-cols-2 gap-16">
+        {/* Momentos CBI */}
+        <div>
+          <div class="flex items-center gap-3 mb-8">
+            <div class="h-px w-8 bg-[#6b9d28]"></div>
+            <h2 class="text-2xl font-bold text-[#333]">Momentos CBI</h2>
+          </div>
+          <PhotoGallery photos={momentosPhotos} />
+        </div>
+
+        {/* Services and Social Media */}
+        <div>
+          {/* Social Media */}
+          <div class="mb-12">
+            <div class="flex items-center gap-3 mb-8">
+              <div class="h-px w-8 bg-[#6b9d28]"></div>
+              <h2 class="text-2xl font-bold text-[#333]">Redes sociales</h2>
+            </div>
+            <p class="text-gray-600 mb-6">¡Conéctate con nosotros!</p>
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="w-12 h-12 bg-[#3b5998] rounded-lg flex items-center justify-center text-white hover:opacity-90 transition-opacity"
+                aria-label="Facebook"
+              >
+                <Facebook class="h-6 w-6" />
+              </a>
+              <a
+                href="#"
+                class="w-12 h-12 bg-black rounded-lg flex items-center justify-center text-white hover:opacity-90 transition-opacity"
+                aria-label="Twitter"
+              >
+                <Twitter class="h-6 w-6" />
+              </a>
+              <a
+                href="#"
+                class="w-12 h-12 bg-[#ff0000] rounded-lg flex items-center justify-center text-white hover:opacity-90 transition-opacity"
+                aria-label="YouTube"
+              >
+                <Youtube class="h-6 w-6" />
+              </a>
+              <a
+                href="#"
+                class="w-12 h-12 bg-gradient-to-br from-[#833ab4] via-[#fd1d1d] to-[#fcb045] rounded-lg flex items-center justify-center text-white hover:opacity-90 transition-opacity"
+                aria-label="Instagram"
+              >
+                <Instagram class="h-6 w-6" />
+              </a>
+            </div>
+          </div>
+
+          {/* Services */}
+          <div>
+            <div class="flex items-center gap-3 mb-8">
+              <div class="h-px w-8 bg-[#6b9d28]"></div>
+              <h2 class="text-2xl font-bold text-[#333]">Servicios</h2>
+            </div>
+            <div class="space-y-2">
+              <ServiceLinktitle="Programa de Formación Docente de CBI" />
+              <Separator />
+              <ServiceLink
+                icon={(<Users class="h-6 w-6" />)}
+                title="Nuevo Ingreso"
+              />
+              <Separator />
+              <ServiceLink
+                icon={(<BrainCircuit class="h-6 w-6" />)}
+                title="Apoyo psicopedagógico"
+              />
+              <Separator />
+              <ServiceLink
+                icon={(<Network class="h-6 w-6" />)}
+                title="Coordinación de Extensión Universitaria"
+              />
+              <Separator />
+              <ServiceLink
+                icon={(<HomeIcon class="h-6 w-6" />)}
+                title="Coordinación de Servicios Integrados para el Bienestar"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Footer */}
+  <footer class="bg-[#222] text-white py-12 mt-auto">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="grid md:grid-cols-3 gap-10">
+        <div>
+          <h4 class="font-bold text-lg mb-6 flex items-center gap-2">
+            <div class="w-1 h-5 bg-[#6b9d28]"></div>
+            Universidad Autónoma Metropolitana
+          </h4>
+          <p class="text-sm text-gray-300">
+            Unidad Iztapalapa
+            <br />
+            Av. San Rafael Atlixco 186, Col. Vicentina
+            <br />
+            Iztapalapa, 09340 Ciudad de México, CDMX
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-6 flex items-center gap-2">
+            <div class="w-1 h-5 bg-[#6b9d28]"></div>
+            Enlaces rápidos
+          </h4>
+          <ul class="space-y-3 text-sm text-gray-300">
+            <li>
+              <a href="#" class="hover:text-[#6b9d28] transition-colors">
+                Calendario escolar
+              </a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-[#6b9d28] transition-colors">
+                Titlani
+              </a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-[#6b9d28] transition-colors">
+                Xanum
+              </a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-[#6b9d28] transition-colors">
+                Directorio
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-6 flex items-center gap-2">
+            <div class="w-1 h-5 bg-[#6b9d28]"></div>
+            Contacto
+          </h4>
+          <p class="text-sm text-gray-300 mb-6">
+            Teléfono: (55) 5804 4600
+            <br />
+            Email: comunicacion@iztapalapa.uam.mx
+          </p>
+        </div>
+      </div>
+      <div
+        class="border-t border-gray-800 mt-10 pt-6 text-center text-sm text-gray-400"
+      >
+        <p>
+          © {new Date().getFullYear()} Universidad Autónoma Metropolitana. Todos
+          los derechos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
 </Layout>

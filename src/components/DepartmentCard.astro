@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  image: string;
+  linkType: "read-more" | "website";
+}
+
+const { title, image, linkType } = Astro.props;
+---
+
+<div class="group relative h-56 overflow-hidden rounded-lg">
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/70 transition-colors z-10"
+  >
+  </div>
+  <img
+    src={image || "/placeholder.svg"}
+    alt={title}
+    class="object-cover transform group-hover:scale-110 transition-transform duration-700"
+  />
+  <div class="absolute inset-0 flex flex-col justify-between z-20 p-5">
+    <div
+      class="w-0 h-0.5 bg-[#6b9d28] group-hover:w-12 transition-all duration-300"
+    >
+    </div>
+    <div>
+      <h3 class="text-white font-medium text-lg mb-3">{title}</h3>
+      <button
+        class="bg-white/80 hover:bg-white text-gray-800 rounded-md text-xs"
+      >
+        <a href="#">{linkType === "read-more" ? "Leer más" : "Sitio web"}</a>
+      </button>
+    </div>
+  </div>
+</div>

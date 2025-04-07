@@ -1,0 +1,31 @@
+---
+const navItems = [
+  { label: "Inicio", href: "/" },
+  { label: "CBI", href: "#" },
+  { label: "Oferta Académica", href: "#" },
+  { label: "Investigación", href: "#" },
+  { label: "Docencia", href: "#" },
+  { label: "Comunidad", href: "#" },
+  { label: "Difusión", href: "#" },
+  { label: "Consejo Divisional", href: "#" },
+];
+---
+
+<div class="bg-[#333] text-white">
+  <div class="container mx-auto">
+    <div class="flex justify-between items-center py-3 px-4 md:px-0">
+      <nav class="hidden md:flex space-x-6">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="text-sm font-medium hover:text-[#6b9d28] transition-colors"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+</div>
